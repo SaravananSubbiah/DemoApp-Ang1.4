@@ -11,12 +11,16 @@ eventsApp.controller('EventController',
 		eventData.getEvent(function(event){
 			$scope.event = event;
 		});
-		*/
+		
 		eventData.getEvent()
 			.success(function(event){$scope.event = event; })
 			.error(function(data, status, headers, config){
 					log(data, status, headers(), config);
-				});
+				});*/
+			eventData.getEvent()
+			.$promise
+			.then(function(event){$scope.event = event})
+			.catch(function(response){console.log(response)})
 			
 			$scope.upVoteSession = function(session){
 				session.upVoteCount++;
